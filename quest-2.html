@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Sandbox Challenge | Mission 02</title>
+    <meta name="title" content="The Sandbox Challenge | Mission 02" />
+    <meta name="description" content="به آزمایشگاه هوش مصنوعی خوش آمدید — مأموریت ۰۲: ساخت جزوهٔ هوشمند، تولید تصاویر با AI و مهارت‌های رمزگردانی برای یادگیری بهتر." />
+    <meta name="keywords" content="Sandbox Challenge, Mission 02, جزوه هوشمند, هوش مصنوعی, رمزگردانی, AI, آموزش" />
+    <meta name="author" content="Sandbox Game Master" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="The Sandbox Challenge | Mission 02" />
+    <meta property="og:description" content="مأموریت ۰۲: ساخت جزوهٔ هوشمند و تولید تصاویر اختصاصی با کمک هوش مصنوعی." />
+    <meta property="og:image" content="https://x-dev.org/aic/assets/og-quest2.webp" />
+    <meta property="og:locale" content="fa_IR" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Sandbox Challenge | Mission 02" />
+    <meta name="twitter:description" content="مأموریت ۰۲: ساخت جزوهٔ هوشمند و تولید تصاویر اختصاصی با کمک هوش مصنوعی." />
+    <meta name="twitter:image" content="https://x-dev.org/aic/assets/og-quest2.webp" />
+
+    <!-- Structured Data: WebPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "The Sandbox Challenge | Mission 02",
+      "description": "مأموریت ۰۲: ساخت جزوهٔ هوشمند و تولید تصاویر اختصاصی با کمک هوش مصنوعی.",
+      "inLanguage": "fa",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Sandbox Game Master"
+      }
+    }
+    </script>
+
+    <link
+      href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link href="./dist/output.css" rel="stylesheet">
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      .glass-panel {
+        background: rgba(30, 41, 59, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .neon-text {
+        text-shadow: 0 0 10px rgba(139, 92, 246, 0.5),
+          0 0 20px rgba(139, 92, 246, 0.3);
+      }
+
+      .code-block {
+        font-family: "Courier New", Courier, monospace;
+        background: #0d1117;
+        border-left: 4px solid #8b5cf6;
+      }
+
+      /* استایل خاص باکس آموزشی */
+      .tutorial-box {
+        background: linear-gradient(
+          135deg,
+          rgba(249, 115, 22, 0.1) 0%,
+          rgba(15, 23, 42, 0.8) 100%
+        );
+        border: 1px solid rgba(249, 115, 22, 0.3);
+        box-shadow: 0 0 15px rgba(249, 115, 22, 0.1);
+      }
+
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0f172a;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #334155;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #475569;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-game-dark text-slate-200 font-sans antialiased selection:bg-game-primary selection:text-white overflow-x-hidden"
+  >
+    <div class="fixed inset-0 z-[-1] opacity-20 pointer-events-none">
+      <div
+        class="absolute top-10 left-10 w-72 h-72 bg-game-primary rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow"
+      ></div>
+      <div
+        class="absolute top-10 right-10 w-72 h-72 bg-game-secondary rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow"
+        style="animation-delay: 1s"
+      ></div>
+      <div
+        class="absolute -bottom-8 left-20 w-72 h-72 bg-game-accent rounded-full mix-blend-multiply filter blur-3xl animate-pulse-slow"
+        style="animation-delay: 2s"
+      ></div>
+    </div>
+
+    <header class="container mx-auto px-4 py-12 text-center relative">
+      <div
+        class="inline-block mb-4 px-4 py-1 rounded-full border border-game-accent/50 bg-game-accent/10 text-game-accent text-sm font-bold uppercase tracking-widest animate-pulse"
+      >
+        <i class="fa-solid fa-lock-open mr-2"></i> Mission 02 Unlocked
+      </div>
+      <h1
+        class="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-game-secondary via-white to-game-primary mb-6 neon-text animate-float"
+      >
+        The Sandbox Challenge
+      </h1>
+      <p class="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+        به آزمایشگاه هوش مصنوعی خوش آمدید. اینجا جایی است که دانش به
+        <span class="text-game-secondary font-bold">قدرت</span> تبدیل می‌شود.
+      </p>
+    </header>
+
+    <section class="container mx-auto px-4 mb-20">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+          <i class="fa-solid fa-users-viewfinder text-game-gold"></i> وضعیت
+          اسکوادها
+        </h2>
+        <span
+          class="text-xs font-mono text-slate-500 border border-slate-700 px-2 py-1 rounded"
+          >LIVE DATA</span
+        >
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div
+          class="glass-panel rounded-2xl p-6 hover:border-game-accent/50 transition-all hover:-translate-y-1 group cursor-pointer relative overflow-hidden"
+        >
+          <div
+            class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-pink-500/20 to-transparent rounded-bl-full -mr-4 -mt-4"
+          ></div>
+          <div class="flex justify-between items-start mb-4">
+            <h3
+              class="text-xl font-bold text-pink-400 group-hover:text-pink-300"
+            >
+              AIX Nova
+            </h3>
+            <i class="fa-solid fa-calculator text-2xl text-pink-500/50"></i>
+          </div>
+          <div class="text-sm text-slate-400 mb-4">
+            <i class="fa-solid fa-book mr-1"></i> مأموریت: ریاضی
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300"
+              >سارا</span
+            >
+            <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300"
+              >یگانه</span
+            >
+            <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300"
+              >الینا ا.</span
+            >
+            <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300"
+              >سلدا</span
+            >
+          </div>
+        </div>
+
+        <div
+          class="glass-panel rounded-2xl p-6 hover:border-game-secondary/50 transition-all hover:-translate-y-1 group cursor-pointer relative overflow-hidden"
+        >
+          <div
+            class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-cyan-500/20 to-transparent rounded-bl-full -mr-4 -mt-4"
+          ></div>
+          <div class="flex justify-between items-start mb-4">
+            <h3
+              class="text-xl font-bold text-cyan-400 group-hover:text-cyan-300"
+            >
+              Cyber Masters
+            </h3>
+            <i class="fa-solid fa-atom text-2xl text-cyan-500/50"></i>
+          </div>
+          <div class="text-sm text-slate-400 mb-4">
+            <i class="fa-solid fa-book mr-1"></i> مأموریت: فیزیک
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300"
+              >آیسا</span
+            >
+            <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300"
+              >ایلکای</span
+            >
+            <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300"
+              >هلیا</span
+            >
+            <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300"
+              >عطیه</span
+            >
+            <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300"
+              >الینا ر.</span
+            >
+            <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300"
+              >مهراسا</span
+            >
+          </div>
+        </div>
+
+        <div
+          class="glass-panel rounded-2xl p-6 hover:border-green-500/50 transition-all hover:-translate-y-1 group cursor-pointer relative overflow-hidden"
+        >
+          <div
+            class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-green-500/20 to-transparent rounded-bl-full -mr-4 -mt-4"
+          ></div>
+          <div class="flex justify-between items-start mb-4">
+            <h3
+              class="text-xl font-bold text-green-400 group-hover:text-green-300"
+            >
+              Masterminds
+            </h3>
+            <i class="fa-solid fa-dna text-2xl text-green-500/50"></i>
+          </div>
+          <div class="text-sm text-slate-400 mb-4">
+            <i class="fa-solid fa-book mr-1"></i> مأموریت: زیست
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300"
+              >آتنا</span
+            >
+            <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300"
+              >مهسا</span
+            >
+            <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300"
+              >آیدان</span
+            >
+            <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300"
+              >منوره</span
+            >
+            <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300"
+              >مایسا</span
+            >
+            <span class="px-2 py-1 bg-slate-800 rounded text-xs text-slate-300"
+              >مهلا</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container mx-auto px-4 mb-24">
+      <div
+        class="glass-panel rounded-3xl overflow-hidden shadow-2xl shadow-game-primary/20 border border-slate-700"
+      >
+        <div
+          class="bg-gradient-to-r from-game-card to-slate-900 p-8 border-b border-slate-700 relative"
+        >
+          <div
+            class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-game-primary via-game-secondary to-game-accent"
+          ></div>
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">
+            Operation: Synth-Codex
+          </h2>
+          <p class="text-slate-400">مأموریت: ساخت جزوه هوشمند با قدرت AI</p>
+
+          <div class="flex flex-wrap gap-4 mt-6">
+            <div
+              class="flex items-center gap-2 bg-game-gold/10 text-game-gold px-4 py-2 rounded-lg border border-game-gold/20"
+            >
+              <i class="fa-solid fa-trophy"></i>
+              <span class="font-bold">150 XP</span>
+            </div>
+            <div
+              class="flex items-center gap-2 bg-blue-500/10 text-blue-400 px-4 py-2 rounded-lg border border-blue-500/20"
+            >
+              <i class="fa-solid fa-medal"></i>
+              <span class="font-bold">نشان "معمار دانش"</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-8 grid md:grid-cols-2 gap-12">
+          <div>
+            <h3
+              class="text-xl font-bold text-white mb-6 flex items-center gap-2"
+            >
+              <span
+                class="w-8 h-8 rounded-full bg-game-primary flex items-center justify-center text-sm"
+                >1</span
+              >
+              اهداف عملیات
+            </h3>
+            <ul
+              class="space-y-6 relative border-l-2 border-slate-700 pr-6 mr-3"
+            >
+              <li class="relative">
+                <div
+                  class="absolute -right-[31px] top-1 w-4 h-4 rounded-full bg-game-secondary border-2 border-slate-800"
+                ></div>
+                <h4 class="text-lg font-semibold text-slate-200">انتخاب هدف</h4>
+                <p class="text-slate-400 text-sm mt-1">
+                  یک فصل سخت از درستان را انتخاب کنید.
+                </p>
+              </li>
+              <li class="relative">
+                <div
+                  class="absolute -right-[31px] top-1 w-4 h-4 rounded-full bg-game-primary border-2 border-slate-800"
+                ></div>
+                <h4 class="text-lg font-semibold text-slate-200">
+                  کیمیاگری با پرامپت
+                </h4>
+                <p class="text-slate-400 text-sm mt-1">
+                  استفاده از AI برای تولید محتوا (بدون کپی-پیست!).
+                </p>
+              </li>
+              <li class="relative">
+                <div
+                  class="absolute -right-[31px] top-1 w-4 h-4 rounded-full bg-game-accent border-2 border-slate-800"
+                ></div>
+                <h4 class="text-lg font-semibold text-slate-200">
+                  تصویرسازی جادویی
+                </h4>
+                <p class="text-slate-400 text-sm mt-1">
+                  ساخت تصاویر اختصاصی برای مفاهیم درس.
+                </p>
+              </li>
+              <li class="relative">
+                <div
+                  class="absolute -right-[31px] top-1 w-4 h-4 rounded-full bg-game-gold border-2 border-slate-800"
+                ></div>
+                <h4 class="text-lg font-semibold text-slate-200">
+                  تاییدیه اوراکل
+                </h4>
+                <p class="text-slate-400 text-sm mt-1">
+                  چک کردن صحت علمی با کتاب یا معلم (50 XP اضافه!).
+                </p>
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="bg-slate-900/50 rounded-xl p-6 border border-slate-700/50"
+          >
+            <h3
+              class="text-lg font-bold text-slate-200 mb-4 border-b border-slate-700 pb-2"
+            >
+              <i class="fa-solid fa-file-export mr-2 text-slate-400"></i> خروجی
+              نهایی
+            </h3>
+            <p class="text-slate-400 text-sm mb-4">یک فایل PDF جذاب شامل:</p>
+            <div class="grid grid-cols-2 gap-3 text-sm">
+              <div
+                class="bg-slate-800 p-3 rounded text-slate-300 flex items-center gap-2"
+              >
+                <i class="fa-solid fa-robot text-game-primary"></i> توضیحات AI
+              </div>
+              <div
+                class="bg-slate-800 p-3 rounded text-slate-300 flex items-center gap-2"
+              >
+                <i class="fa-solid fa-image text-game-secondary"></i> تصاویر AI
+              </div>
+              <div
+                class="bg-slate-800 p-3 rounded text-slate-300 flex items-center gap-2"
+              >
+                <i class="fa-solid fa-lightbulb text-game-gold"></i>
+                رمزگردانی‌ها
+              </div>
+              <div
+                class="bg-slate-800 p-3 rounded text-slate-300 flex items-center gap-2"
+              >
+                <i class="fa-solid fa-users text-game-accent"></i> لوگوی تیم
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container mx-auto px-4 mb-16">
+      <div
+        class="tutorial-box rounded-2xl p-6 md:p-8 relative overflow-hidden group"
+      >
+        <div
+          class="absolute -right-10 -top-10 w-40 h-40 bg-game-info/20 rounded-full blur-3xl"
+        ></div>
+
+        <div class="flex flex-col md:flex-row gap-6 items-start">
+          <div
+            class="hidden md:flex flex-col items-center justify-center w-24 h-24 bg-game-info/20 rounded-full border border-game-info/50 shrink-0 animate-bounce"
+          >
+            <i class="fa-solid fa-brain text-4xl text-game-info"></i>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-bold text-game-info mb-3">
+              <i class="fa-solid fa-unlock mr-2"></i> Skill Unlocked: رمزگردانی
+              (Mnemonic)
+            </h3>
+            <p class="text-slate-300 mb-4 leading-relaxed">
+              رمزگردانی یعنی "چیت‌کد" برای مغز! 🧠 به جای اینکه مطالب سخت رو خشک
+              و خالی حفظ کنید، اون‌ها رو به چیزهای بامزه تبدیل می‌کنید تا یادتون
+              نره.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-4 mt-4">
+              <div
+                class="bg-slate-900/80 p-3 rounded-lg border-r-4 border-game-secondary"
+              >
+                <span class="text-xs text-slate-500 block mb-1"
+                  >مثال زیست‌شناسی:</span
+                >
+                <p class="text-sm text-slate-200">
+                  مراحل میتوز (پروفاز، متافاز، آنافاز، تلوفاز) 👈 رمز:
+                  <span class="text-game-secondary font-bold">«پومات»</span> 🍅
+                </p>
+              </div>
+              <div
+                class="bg-slate-900/80 p-3 rounded-lg border-r-4 border-game-accent"
+              >
+                <span class="text-xs text-slate-500 block mb-1"
+                  >مثال فیزیک:</span
+                >
+                <p class="text-sm text-slate-200">
+                  قانون دوم نیوتون (F=ma) 👈 رمز:
+                  <span class="text-game-accent font-bold"
+                    >«فیل سوار موتور داره آواز میخونه»</span
+                  >
+                  🐘🏍️
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container mx-auto px-4 mb-20">
+      <div class="text-center mb-12">
+        <h2
+          class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-game-primary to-white inline-block"
+        >
+          The Alchemist's Guide
+        </h2>
+        <p class="text-slate-400 mt-2">راهنمای مخفی برای ساخت جزوه</p>
+      </div>
+
+      <div class="space-y-8 max-w-4xl mx-auto">
+        <div class="relative group">
+          <div
+            class="absolute -inset-1 bg-gradient-to-r from-game-primary to-purple-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"
+          ></div>
+          <div
+            class="relative bg-slate-900 ring-1 ring-slate-700 rounded-lg p-6"
+          >
+            <div class="flex items-center gap-4 mb-4">
+              <span
+                class="bg-game-primary text-white w-8 h-8 flex items-center justify-center rounded font-bold"
+                >1</span
+              >
+              <h3 class="text-xl font-bold text-slate-200">
+                تنظیم شخصیت و نقشه (The Blueprint)
+              </h3>
+            </div>
+            <div
+              class="code-block p-4 rounded-md text-sm text-slate-300 overflow-x-auto"
+            >
+              <p class="mb-2 text-slate-500">// Prompt 01: Setup</p>
+              <p>
+                تو یک معلم فوق‌العاده خلاق، باهوش و مسلط به تدریس درس
+                <span class="text-game-secondary">[نام درس]</span> پایه دهم هستی
+                که ۳۰ سال تجربه داری و می‌تونی سخت‌ترین مفاهیم رو به ساده‌ترین
+                شکل توضیح بدی. من می‌خوام برای فصل
+                <span class="text-game-secondary">[نام فصل]</span> با موضوع
+                <span class="text-game-secondary">[موضوع]</span> یک جزوه آموزشی
+                کامل و جذاب بسازم. لطفاً فقط یک «سرفصل‌بندی دقیق و کامل» از تمام
+                زیرمجموعه‌های این فصل برام لیست کن.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative group">
+          <div
+            class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"
+          ></div>
+          <div
+            class="relative bg-slate-900 ring-1 ring-slate-700 rounded-lg p-6"
+          >
+            <div class="flex items-center gap-4 mb-4">
+              <span
+                class="bg-game-secondary text-white w-8 h-8 flex items-center justify-center rounded font-bold"
+                >2</span
+              >
+              <h3 class="text-xl font-bold text-slate-200">
+                تولید محتوای عمیق (The Deep Dive)
+              </h3>
+            </div>
+            <div
+              class="code-block p-4 rounded-md text-sm text-slate-300 overflow-x-auto"
+            >
+              <p class="mb-2 text-slate-500">
+                // Prompt 02: Content Generation (For each section)
+              </p>
+              <p>
+                حالا بریم سراغ بخش اول:
+                <span class="text-game-secondary">[نام سرفصل]</span>. این بخش رو
+                کاملاً برای من باز کن. ۱. مفهوم کلی رو ساده و روان توضیح بده. ۲.
+                از مثال‌های ملموس و واقعی استفاده کن. ۳. فرمول‌ها یا اصطلاحات
+                سخت رو کالبدشکافی کن. ۴. لحن توضیحاتت دوستانه اما علمی باشه.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative group">
+          <div
+            class="absolute -inset-1 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"
+          ></div>
+          <div
+            class="relative bg-slate-900 ring-1 ring-slate-700 rounded-lg p-6"
+          >
+            <div class="flex items-center gap-4 mb-4">
+              <span
+                class="bg-game-gold text-slate-900 w-8 h-8 flex items-center justify-center rounded font-bold"
+                >3</span
+              >
+              <h3 class="text-xl font-bold text-slate-200">
+                جادوی حافظه (Memory Hacks)
+              </h3>
+              <span
+                class="text-xs bg-game-info/20 text-game-info px-2 py-1 rounded border border-game-info/30"
+                >نیازمند مهارت رمزگردانی</span
+              >
+            </div>
+            <div
+              class="code-block p-4 rounded-md text-sm text-slate-300 overflow-x-auto"
+            >
+              <p class="mb-2 text-slate-500">// Prompt 03: Retention</p>
+              <p>
+                عالی بود. حالا می‌خوام کاری کنی که این مبحث هرگز از یادم نره. ۱.
+                یک «رمزگردانی» (Mnemonic) یا شعر کوتاه بامزه بساز. ۲. ۳ تا «سوال
+                دام‌دار» تستی سخت طرح کن و جواب تشریحی بده. ۳. یک جدول مقایسه‌ای
+                برای مفاهیم کلیدی بکش.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative group">
+          <div
+            class="absolute -inset-1 bg-gradient-to-r from-pink-500 to-rose-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"
+          ></div>
+          <div
+            class="relative bg-slate-900 ring-1 ring-slate-700 rounded-lg p-6"
+          >
+            <div class="flex items-center gap-4 mb-4">
+              <span
+                class="bg-game-accent text-white w-8 h-8 flex items-center justify-center rounded font-bold"
+                >4</span
+              >
+              <h3 class="text-xl font-bold text-slate-200">
+                مهندسی تصویر (Visual Engineering)
+              </h3>
+            </div>
+            <div
+              class="code-block p-4 rounded-md text-sm text-slate-300 overflow-x-auto"
+            >
+              <p class="mb-2 text-slate-500">
+                // Prompt 04: Image Generation Instructions
+              </p>
+              <p>
+                من می‌خوام برای این بخش یک تصویر جذاب با هوش مصنوعی بسازم. لطفاً
+                ۳ تا «پرامپت تصویرسازی» (Image Prompts) به زبان انگلیسی برام
+                بنویس که بتونم به ابزارهایی مثل Bing Image Creator بدم. سبک
+                تصویر:
+                <span class="text-game-secondary"
+                  >[کارتونی / سه بعدی / سایبرپانک]</span
+                >.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container mx-auto px-4 mb-16">
+      <div class="glass-panel rounded-2xl p-6 md:p-8 relative overflow-hidden group">
+        <div class="absolute -right-10 -top-10 w-40 h-40 bg-game-info/10 rounded-full blur-3xl"></div>
+        <div class="text-white max-w-4xl mx-auto">
+          <h2 class="text-2xl font-bold text-white mb-3">راهنمای فعالیت گروهی و تقسیم کار</h2>
+          <p class="text-slate-300 mb-4">قرارِ امروز: تیم‌تون قراره یه جزوهٔ جذاب و خفن بسازه. اینجا یه راهنمای ساده و دوستانه براتون گذاشتم تا تقسیم کار راحت بشه و همه باحال جلو برن:</p>
+
+          <ol class="list-decimal list-inside space-y-3 text-slate-300">
+            <li><strong>تعیین نقش‌ها:</strong> یک نفر «رهبر تیم» باشه (زمان‌بندی و هماهنگی)، یک نفر «محتواگذار» (نوشتن متن‌ها)، یک نفر «تصویرساز» (پرامپت و تولید تصاویر)، و یک نفر «ویرایشگر» (نهایی‌سازی و چک‌کیفیت).</li>
+            <li><strong>تقسیم فصل‌ها:</strong> فصل یا سرفصل‌ها رو بین اعضا تقسیم کنید؛ هرکسی مسئولِ یک یا دو فصلِ مشخص باشه.</li>
+            <li><strong>تحویل‌های کوچک:</strong> هر عضو تا یک تاریخ مشخص یک پیش‌نویس کوتاه تحویل بده (مثلاً ۳ روز). بعد همه بازخورد می‌دن و اصلاح می‌کنن.</li>
+            <li><strong>جلسهٔ هماهنگی:</strong> هر دو روز یک‌بار ۱۵ دقیقه آنلاین همدیگه رو آپدیت کنید؛ چی تموم شد، چی مونده، کمک لازم داری؟</li>
+            <li><strong>کیفیت و منابع:</strong> ویرایشگر منابع علمی رو چک کنه و مطمئن بشه که توضیحات درست و ساده‌ان؛ اگه لازم شد از معلم یا کتاب مرجع تایید بگیرین.</li>
+            <li><strong>پیشنهاد ابزارها:</strong> برای همکاری از Google Docs یا Notion استفاده کنین؛ برای تصاویر از ابزار AI مثل Bing Image Creator یا Grok و برای پرامپت‌ها یه فایل مشترک داشته باشین.</li>
+            <li><strong>نکتهٔ خودمونی:</strong> فراموش نکنین که حال و هوای جزوه رو خیلی رسمی نکنین — با یه لحن شاد و خودمانی بیشتر می‌چسبه.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <footer
+      class="border-t border-slate-800 bg-slate-900 py-12 text-center relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-game-primary/5 to-transparent"
+      ></div>
+      <div class="container mx-auto px-4 relative z-10">
+        <h3 class="text-2xl font-bold text-white mb-4">آماده‌ی بسازیش؟</h3>
+        <p class="text-slate-400 mb-8">
+          همین الان با اسکوادت شروع کن و آینده یادگیری رو بساز.
+        </p>
+        <a
+          href="https://t.me/gen_ai_artist"
+          target="_blank"
+          class="inline-block bg-white text-game-dark px-8 py-3 rounded-full font-bold hover:bg-game-primary hover:text-white transition-all shadow-lg shadow-white/20 hover:shadow-game-primary/50 hover:scale-105"
+        >
+          <i class="fa-brands fa-telegram mr-2"></i> ورود به گروه تلگرام
+        </a>
+        <p class="text-xs text-slate-600 mt-12">
+          Designed by Sandbox Game Master | AI Gen Class 2025
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

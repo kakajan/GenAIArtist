@@ -1,0 +1,22 @@
+@import "tailwindcss";
+@source "../**/*.html";
+
+@theme {
+  --font-sans: "Vazirmatn", "sans-serif";
+
+  --color-game-dark: #0f172a;
+  --color-game-card: #1e293b;
+  --color-game-primary: #8b5cf6;
+  --color-game-secondary: #06b6d4;
+  --color-game-accent: #f43f5e;
+  --color-game-gold: #fbbf24;
+  --color-game-info: #f97316;
+
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 3s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}
